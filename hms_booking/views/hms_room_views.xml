@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="hms_room_view_tree" model="ir.ui.view">
+        <field name="name">hms_room_view_tree</field>
+        <field name="model">hms.room</field>
+        <field name="arch" type="xml">
+            <tree string="hms_room_tree" editable="bottom">
+                <field name="name"/>
+                <field name="hms_floor_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hms_room_search" model="ir.ui.view">
+        <field name="name">hms_room_search</field>
+        <field name="model">hms.room</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="hms_floor_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Floors" name="floors" context="{'group_by':'hms_floor_id'}"/>
+                    <filter string="Rooms" name="rooms" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hms_room_action" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hms.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
